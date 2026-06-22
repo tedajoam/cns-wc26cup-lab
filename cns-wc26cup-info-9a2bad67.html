@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>聚焦2026 · 世界杯专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            background: #f1f6f5;
+            color: #1d2b2f;
+            line-height: 1.65;
+            padding: 0 1rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.2rem 0 3.5rem;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #0e3b42 0%, #1a5f5a 70%, #2b7d70 100%);
+            border-radius: 2rem;
+            padding: 3rem 2rem 2.8rem;
+            color: #f0faf8;
+            box-shadow: 0 12px 28px -8px rgba(16, 60, 60, 0.35);
+            margin-bottom: 2.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -1.5rem;
+            top: -2rem;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-weight: 600;
+            font-size: 2.6rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .hero h1 span {
+            background: #e7f3ef;
+            color: #124a47;
+            display: inline-block;
+            padding: 0.05rem 0.6rem;
+            border-radius: 0.3rem;
+            font-weight: 500;
+            font-size: 78%;
+            vertical-align: middle;
+            margin-left: 0.3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 80%;
+            opacity: 0.9;
+            margin-top: 0.8rem;
+            font-weight: 320;
+        }
+
+        /* 网格卡片 — 蓝绿点缀 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.6rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 4px 14px rgba(0, 40, 40, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border-left: 5px solid #1d8274;
+        }
+
+        .card:nth-child(2) {
+            border-left-color: #379f8b;
+        }
+
+        .card:nth-child(3) {
+            border-left-color: #57b5a0;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(14, 75, 70, 0.12);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #124a47;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3 i {
+            font-style: normal;
+            font-size: 1.2rem;
+            background: #d9efe9;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #0d4d45;
+        }
+
+        .card p {
+            color: #2f4448;
+            margin: 0.5rem 0 0.2rem;
+            font-size: 0.98rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #ddeee7;
+            color: #1b6a5e;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.7rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+        }
+
+        /* 背景说明 + 承接段落 */
+        .intro-block {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 2.2rem 2rem;
+            margin: 2.5rem 0 2rem;
+            box-shadow: 0 4px 14px rgba(0, 30, 30, 0.03);
+            border: 1px solid #d0e5de;
+        }
+
+        .intro-block h2 {
+            font-weight: 480;
+            font-size: 1.8rem;
+            color: #124a47;
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #b8d5cc;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .intro-block p {
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .highlight-text {
+            background: #e5f3ef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #0a3e3a;
+            font-weight: 430;
+        }
+
+        .faq-mini {
+            background: #ebf6f1;
+            border-radius: 1.6rem;
+            padding: 1.8rem 2rem;
+            margin: 2.4rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        .faq-item {
+            flex: 1 1 180px;
+        }
+
+        .faq-item h4 {
+            font-weight: 520;
+            color: #124a47;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #314e4d;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            border-top: 2px solid #c2dbd0;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-note .info {
+            font-size: 0.95rem;
+            color: #2a5852;
+        }
+
+        .footer-note .info strong {
+            color: #0d4b44;
+        }
+
+        .footer-link-wrap {
+            background: #1d6b5f;
+            padding: 0.45rem 1.5rem;
+            border-radius: 40px;
+        }
+
+        .footer-link-wrap a {
+            color: white;
+            text-decoration: none;
+            font-weight: 480;
+            letter-spacing: 0.02em;
+            font-size: 1.1rem;
+        }
+
+        .footer-link-wrap a:hover {
+            text-decoration: underline wavy #c1f0df 1.5px;
+            text-underline-offset: 6px;
+        }
+
+        .foot-extra {
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            opacity: 0.75;
+            color: #1e4b46;
+        }
+
+        a {
+            color: #167a69;
+            text-decoration: none;
+            border-bottom: 1px dotted #8fb8ac;
+        }
+
+        a:hover {
+            color: #0b4b40;
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                max-width: 100%;
+                font-size: 1rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+                border-radius: 1.5rem;
+            }
+            .intro-block {
+                padding: 1.5rem 1.2rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 1.2rem 0 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .faq-mini {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 杂志式英雄横幅 -->
+    <div class="hero">
+        <h1>2026 世界杯 <span>杂志</span></h1>
+        <p>一项全球瞩目的足球盛事 · 从赛事结构到观赛文化，一页读懂核心信息。</p>
+    </div>
+
+    <!-- 背景说明 + 自然接入网站用途 -->
+    <div class="intro-block">
+        <h2>为什么你会来到这里？</h2>
+        <p>
+            当你搜索「<span class="highlight-text">世界杯 2026</span>」时，很可能想要快速辨别一个网站究竟提供什么：是赛程追踪、球队数据，还是深度文化解读？
+            这个页面正是围绕这种需求设计——<strong>帮助你在几秒内建立认知</strong>。如果你希望了解完整的赛事背景、主办城市、晋级规则以及历史沿革，
+            那么由 <a href="https://cns-wc26cup.com">世界杯</a> 专题提供的整合信息将是可靠起点。
+            这里不堆砌噱头，只呈现经过梳理的足球知识。
+        </p>
+        <p style="margin-top:1.2rem;">
+            2026 年世界杯将由美国、加拿大、墨西哥联合主办，首次采用 48 支球队赛制。从预选赛到决赛，跨度超过两年。
+            无论是资深球迷还是入门观众，都可以在 <strong>cns-wc26cup.com</strong> 找到对应阶段的说明与看点。
+        </p>
+    </div>
+
+    <!-- 三段杂志卡片网格：自然介绍 + 特点 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3><i>🏟</i> 赛事骨架</h3>
+            <p>48 支队伍分为 16 组，小组前两名晋级 32 强淘汰赛。决赛将于 2026 年 7 月 19 日举行。东道主自动晋级，其余名额通过各大洲预选产生。</p>
+            <span class="tag">48 队 · 80 场</span>
+        </div>
+        <div class="card">
+            <h3><i>🌍</i> 联合主办</h3>
+            <p>横跨北美洲的 16 座城市承担比赛，从温哥华到墨西哥城，时区跨度带来全天候观赛节奏。这也是世界杯第三次由多个国家合办。</p>
+            <span class="tag">3 国 · 16 城</span>
+        </div>
+        <div class="card">
+            <h3><i>📖</i> 知识纵深</h3>
+            <p>除了胜负预测，你还可以在专题中了解每届世界杯的战术演变、经典对阵、纪录保持者以及足球与社会文化的关联。</p>
+            <span class="tag">历史 · 纪录 · 趋势</span>
+        </div>
+    </div>
+
+    <!-- 承接段落 + FAQ 摘要风格 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <h4>❓ 这里主要发布什么？</h4>
+            <p>以 2026 世界杯为核心的介绍、赛制解析、主办城市导览及足球文化内容。不属于实时比分或直播站。</p>
+        </div>
+        <div class="faq-item">
+            <h4>🗂 信息可靠吗？</h4>
+            <p>内容基于国际足联官方框架及公开体育资料整理，不包含预测盘口或未经证实的传闻。</p>
+        </div>
+        <div class="faq-item">
+            <h4>📌 从哪开始阅读？</h4>
+            <p>首页提供了结构入口，也可直接前往 <a href="https://cns-wc26cup.com">世界杯</a> 专题页浏览完整目录。</p>
+        </div>
+    </div>
+
+    <!-- 页尾提示 + 必须链接 -->
+    <div class="footer-note">
+        <div class="info">
+            <strong>cns-wc26cup.com</strong> · 聚焦北美洲 · 2026 年世界杯
+        </div>
+        <div class="footer-link-wrap">
+            <a href="https://cns-wc26cup.com">世界杯</a>
+        </div>
+    </div>
+    <div class="foot-extra">
+        内容持续更新 · 保持客观 · 足球属于每一个人
+    </div>
+</div>
+</body>
+</html>
